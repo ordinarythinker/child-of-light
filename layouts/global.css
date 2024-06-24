@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Madelyn";
+  src: local("Madelyn"),
+  url("../assets/madelyn_regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Kyiv Type";
+  src: local("Kyiv Type"),
+  url("../assets/kyiv_type_sans.ttf") format("truetype");
+}

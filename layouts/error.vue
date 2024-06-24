@@ -48,8 +48,6 @@ export default {
 #error-container {
   width: 100vw;
   height: 100vh;
-  color: white;
-  background-color: #252525;
 }
 
 h1 {

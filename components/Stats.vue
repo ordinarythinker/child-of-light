@@ -1,12 +1,12 @@
 <template>
   <div class="px-5w my-50 d-flex flex-column">
     <v-divider inset class="sections-separator"></v-divider>
-    <div class="content-container">
-      <div class="col-4">
+    <div class="main-layout">
+      <div class="main-title">
         <p class="page-title">{{ title }}</p>
       </div>
 
-      <div class="d-flex flex-column col-8">
+      <div class="main-content">
         <div id="relative-container">
           <img src="/children.png">
 
@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: "Problem",
+  name: "Stats",
   data: () => {
     return {
       title: "Статистика",

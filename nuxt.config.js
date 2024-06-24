@@ -4,10 +4,9 @@ export default {
   ssr: false,
   target: 'static',
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: 'Дитя Світла - %s',
-    title: 'Стань одним з трьохсот — Даруй світло дітям',
+    titleTemplate: 'Дитячий будинок "Дитя Світла" - %s',
+    title: 'Даруй світло дітям',
     htmlAttrs: {
       lang: 'uk'
     },
@@ -18,7 +17,7 @@ export default {
       { hid: 'description', name: 'description', content: 'Дитя Світла — дитячий будинок за принципом соціального підприємництва: 300 осіб щомісячними донатами по 1000 грн подарують квиток у повноцінне життя дітям-сиротам.' },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'format-detection', content: 'address=no' },
-      { name: 'keywords', content: 'дитячий будинок, дитя світла, донати, діти-сироти, ' },
+      { name: 'keywords', content: 'дитячий будинок "Дитя Світла", дитячий будинок, донати, діти-сироти' },
       { name: 'author', content: 'Andrii Dubovyk' },
       { name: 'copyright', content: '(c) Дитя Світла' },
 
@@ -26,16 +25,16 @@ export default {
       { http_equiv: 'X-UA-Compatible', content: 'IE=edge' },
 
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://writerme.io/' },
-      { property: 'og:title', content: 'WriterMe - Great Ideas Start Here!' },
-      { property: 'og:description', content: 'WriterMe is a comprehensive note-taking app supporting text, images, voice, audio, video, code, and tasks. It also functions as a bookmark manager, allowing organization into folders.' },
-      { property: 'og:image', content: 'https://writerme.io/static/images/writerme.jpg' },
+      { property: 'og:url', content: 'https://dytyasvitla.com.ua/' },
+      { property: 'og:title', content: 'Дитячий будинок "Дитя Світла" — Даруй світло дітям!' },
+      { property: 'og:description', content: 'Дитя Світла — дитячий будинок за принципом соціального підприємництва: 300 осіб щомісячними донатами по 1000 грн подарують квиток у повноцінне життя дітям-сиротам.' },
+      { property: 'og:image', content: 'https://dytyasvitla.com.ua/viz1.jpg' },
 
       { property: 'twitter:card', content: 'summary_large_image' },
-      { property: 'twitter:url', content: 'https://writerme.io/' },
-      { property: 'twitter:title', content: 'WriterMe - Great Ideas Start Here!' },
-      { property: 'twitter:description', content: 'WriterMe is a comprehensive note-taking app supporting text, images, voice, audio, video, code, and tasks. It also functions as a bookmark manager, allowing organization into folders.' },
-      { property: 'twitter:image', content: 'https://writerme.io/static/images/writerme.jpg' }
+      { property: 'twitter:url', content: 'https://dytyasvitla.com.ua/' },
+      { property: 'twitter:title', content: 'Дитячий будинок "Дитя Світла" — Даруй світло дітям!' },
+      { property: 'twitter:description', content: 'Дитя Світла — дитячий будинок за принципом соціального підприємництва: 300 осіб щомісячними донатами по 1000 грн подарують квиток у повноцінне життя дітям-сиротам.' },
+      { property: 'twitter:image', content: 'https://dytyasvitla.com.ua/viz1.jpg' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -44,12 +43,29 @@ export default {
     ]
   },
 
+  router: {
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition;
+      } else if (to.hash) {
+        return {
+          selector: to.hash,
+          behavior: 'smooth',
+        };
+      } else {
+        return { x: 0, y: 0 };
+      }
+    }
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    "~layouts/global.css"
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/video-player.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -68,6 +84,12 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
+    defaultAssets: {
+      font: {
+        family: 'Onest'
+      }
+    },
     theme: {
       dark: false,
       themes: {
