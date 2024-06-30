@@ -76,6 +76,21 @@ export default {
   width: 65%;
 }
 
+@media screen and (max-width: 1150px) {
+  .page-title {
+    font-size: 1.1em;
+    padding-bottom: 30px;
+  }
+
+  .f-22 {
+    font-size: 1em;
+  }
+
+  .f-32 {
+    font-size: 1.1em;
+  }
+}
+
 @media screen and (max-width: 920px) {
   .main-layout {
     flex-direction: column;

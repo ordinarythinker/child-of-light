@@ -1,80 +1,101 @@
-  <template>
-    <div id="sponsors" class="px-5w d-flex flex-column align-center" style="padding-top: 50px;">
-      <div class="d-flex flex-row justify-space-between thin-divider" style="width: 100%;">
-        <Logo/>
+<template>
+  <div id="sponsors" class="px-5w d-flex flex-column align-center">
+    <div class="d-flex flex-row align-center align-content-center justify-space-between thin-divider">
+      <Logo/>
 
-        <div class="d-flex flex-row">
-          <button @click="goto('#sponsors')" class="top-navigation-button-style f-22 selected_border">Учасники</button>
-          <div style="width: 24px; height: 1px;"/>
-          <button @click="goto('#idea')" class="top-navigation-button-style f-22">Ідея</button>
-          <div style="width: 24px; height: 1px;"/>
-          <button @click="goto('#implementation')" class="top-navigation-button-style f-22">Реалізація</button>
-          <div style="width: 24px; height: 1px;"/>
-          <button @click="goto('#history')" class="top-navigation-button-style f-22">Історія</button>
-          <div style="width: 24px; height: 1px;"/>
-          <button @click="goto('#team')" class="top-navigation-button-style f-22">Команда</button>
-          <div style="width: 24px; height: 1px;"/>
-          <button @click="goto('#contacts')" class="top-navigation-button-style f-22">Контакти</button>
-        </div>
-
-        <a :href="monoLink" class="join-button button-background">Підтримати</a>
+      <div class="d-flex flex-row">
+        <button @click="goto('#sponsors')" class="top-navigation-button-style f-22 selected_border hidden-menu">Учасники</button>
+        <div style="width: 24px; height: 1px;"/>
+        <button @click="goto('#idea')" class="top-navigation-button-style f-22 hidden-menu">Ідея</button>
+        <div style="width: 24px; height: 1px;"/>
+        <button @click="goto('#implementation')" class="top-navigation-button-style f-22 hidden-menu">Реалізація</button>
+        <div style="width: 24px; height: 1px;"/>
+        <button @click="goto('#history')" class="top-navigation-button-style f-22 hidden-menu">Історія</button>
+        <div style="width: 24px; height: 1px;"/>
+        <button @click="goto('#team')" class="top-navigation-button-style f-22 hidden-menu">Команда</button>
+        <div style="width: 24px; height: 1px;"/>
+        <button @click="goto('#contacts')" class="top-navigation-button-style f-22 hidden-menu">Контакти</button>
       </div>
 
-      <div style="height: 120px;"></div>
+      <a :href="monoLink" class="join-button f-22 button-background hidden-menu">Підтримати</a>
 
-      <div class="d-block">
-        <div >
-          <div class="pa-0 ma-0 text-center title-child" style="position: relative;">БУДУЄМО ДИТЯЧИЙ БУДИНОК <br>ДЛЯ <span id="title_accent">30 ДIТЕЙ</span>
-            <br><div id="second-title" class="pa-0 ma-0 text-center title-child">ДОЛУЧИСЬ ДО БУДІВНИЦТВА</div>
-          </div>
+      <button @click="toggleDrawer" class="top-navigation-button-style">
+        <img id="hidden-menu-button" src="/menu.png"/>
+      </button>
+    </div>
+
+    <div style="height: 80px;"></div>
+
+    <div class="d-block">
+      <div class="d-flex flex-column">
+        <div class="pa-0 ma-0 text-center title-child" style="position: relative;">
+          БУДУЄМО ДИТЯЧИЙ БУДИНОК <br>ДЛЯ <span id="title_accent">30 ДIТЕЙ</span>
+          <br><div id="second-title" class="pa-0 ma-0 my-10 text-center title-child">ДОЛУЧИСЬ ДО БУДІВНИЦТВА</div>
         </div>
-      </div>
-
-      <div style="height: 80px;"></div>
-
-      <pre class="pa-0 ma-0 text-center f-22 ff">
-        Дитя Світла — дитячий будинок:
-        Шукаємо 300 донорів, які підтримають будівництво дитячого будинку.
-        Ось ті, хто приєднався:
-      </pre>
-
-      <div style="height: 40px;"/>
-
-      <a href="https://forms.gle/WGCvB8dvQpsVDqYm7" class="charity_button button-background">Доєднатися</a>
-
-      <div style="height: 80px;"/>
-
-      <div class="d-grid justify-start">
-        <div
-          v-for="(sponsor, index) in sponsors"
-          :key="index"
-          @click="showDialog($event, index)"
-          class="person-wrapper"
-        >
-          <img :src="sponsor.avatar" :alt="sponsor.name" class="person-image-style"/>
-        </div>
-
-        <a href="https://forms.gle/WGCvB8dvQpsVDqYm7">
-          <div id="plus-button" class="d-flex justify-center align-center">
-            <img src="/plus.svg">
-          </div>
-        </a>
-      </div>
-
-      <div style="height: 120px;"/>
-
-      <ProgressBar value="58" max="300" iconSrc="/child_of_light.svg"/>
-
-      <div style="height: 100px;"/>
-
-      <div v-if="isDialogVisible" class="dialog" :style="dialogStyle">
-        <PersonDialog :name="sponsors[selectedIndex].name" :url="sponsors[selectedIndex].avatar"/>
-        <div class="close-btn" @click="hideDialog">X</div>
       </div>
     </div>
-  </template>
 
-  <script>
+    <div style="height: 80px;"></div>
+
+    <pre id="title-description" class="pa-0 ma-0 d-flex flex-column align-center">
+      <span class="d-block f-22 ff">Дитя Світла — дитячий будинок:</span>
+      <span class="d-block f-22 ff" style="width: 100%">Шукаємо 300 донорів, які підтримають будівництво дитячого будинку.</span>
+      <span class="d-block f-22 ff">Ось ті, хто приєднався:</span>
+    </pre>
+
+    <div style="height: 40px;"/>
+
+    <a href="https://forms.gle/WGCvB8dvQpsVDqYm7" class="charity_button f-22 button-background">Доєднатися</a>
+
+    <div style="height: 80px;"/>
+
+    <div class="d-grid justify-start">
+      <div
+        v-for="(sponsor, index) in sponsors"
+        :key="index"
+        @click="showDialog($event, index)"
+        class="person-wrapper"
+      >
+        <img :src="sponsor.avatar" :alt="sponsor.name" class="person-image-style"/>
+      </div>
+
+      <a href="https://forms.gle/WGCvB8dvQpsVDqYm7">
+        <div id="plus-button" class="d-flex justify-center align-center">
+          <img src="/plus.svg">
+        </div>
+      </a>
+    </div>
+
+    <div style="height: 120px;"></div>
+
+    <ProgressBar value="58" max="300" iconSrc="/child_of_light.svg"/>
+
+    <div style="height: 100px;"></div>
+
+    <div v-if="isDialogVisible" class="dialog" :style="dialogStyle">
+      <PersonDialog :name="sponsors[selectedIndex].name" :url="sponsors[selectedIndex].avatar"/>
+      <div class="close-btn" @click="hideDialog">X</div>
+    </div>
+
+    <div v-if="isDrawerVisible" class="navigation-drawer">
+      <div class="drawer-content">
+        <div class="close-btn" @click="toggleDrawer">X</div>
+        <Logo/>
+        <div style="width: 1px; height: 24px;"/>
+        <button @click="goto('#sponsors')" class="top-navigation-button-style f-22">Учасники</button>
+        <button @click="goto('#idea')" class="top-navigation-button-style f-22">Ідея</button>
+        <button @click="goto('#implementation')" class="top-navigation-button-style f-22u">Реалізація</button>
+        <button @click="goto('#history')" class="top-navigation-button-style f-22">Історія</button>
+        <button @click="goto('#team')" class="top-navigation-button-style f-22">Команда</button>
+        <button @click="goto('#contacts')" class="top-navigation-button-style f-22">Контакти</button>
+        <div style="width: 1px; height: 30px;"/>
+        <a :href="monoLink" class="join-button f-22 top-navigation-button-style button-background">Підтримати</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
   import Problem from "./Stats";
   import PersonDialog from "./PersonDialog";
   export default {
@@ -331,6 +352,7 @@
           top: '0px',
           left: '0px',
         },
+        isDrawerVisible: false,
       }
     },
     methods: {
@@ -349,6 +371,9 @@
       hideDialog() {
         this.isDialogVisible = false;
       },
+      toggleDrawer() {
+        this.isDrawerVisible = !this.isDrawerVisible;
+      },
     }
   }
   </script>
@@ -359,6 +384,7 @@
     display: block;
     z-index: 10;
   }
+
   .dialog .close-btn {
     position: absolute;
     top: 10px;
@@ -370,7 +396,19 @@
     border-radius: 3px;
   }
 
+  #hidden-menu-button {
+    display: none;
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  #title-description {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }
+
   .thin-divider {
+    width: 100%;
     border-bottom: 1px solid #FAE4CA !important;
   }
 
@@ -390,13 +428,12 @@
   }
 
   .top-navigation-button-style {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
   }
 
   .join-button {
     margin-bottom: 8px;
-    font-size: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -425,7 +462,6 @@
     color: black;
     padding: 10px 20px;
     display: inline-block;
-    font-size: 22px;
   }
 
   .person-image-style {
@@ -441,7 +477,7 @@
   }
 
   #second-title {
-    margin-top: -60px !important;
+    margin-top: -30px !important;
     text-align: center;
     width: 100%;
     position: absolute;
@@ -456,5 +492,69 @@
   a {
     text-decoration: none;
     color: black !important;
+  }
+
+  .navigation-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    z-index: 20;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drawer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .drawer-content .close-btn {
+    align-self: flex-end;
+    cursor: pointer;
+    background: #fff;
+    color: #000;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 1060px) {
+    .title-child {
+      font-size: 40px;
+    }
+
+    #title_accent {
+      font-size: 70px;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    .title-child {
+      font-size: 30px;
+    }
+
+    #title_accent {
+      font-size: 50px;
+    }
+
+    #second-title {
+      margin-top: -20px !important;
+    }
+  }
+
+  @media screen and (max-width: 920px) {
+    .hidden-menu {
+      display: none;
+    }
+
+    #hidden-menu-button {
+      display: block;
+    }
   }
 </style>

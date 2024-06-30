@@ -18,6 +18,8 @@ export default {
   flex-direction: row;
   align-items: center;
   width: fit-content;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .logo {
