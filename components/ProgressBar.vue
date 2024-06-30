@@ -1,6 +1,6 @@
 <template>
   <div class="progress-container">
-    <div class="d-flex justify-space-between" style="margin-bottom: -99px !important;">
+    <div id="rectangles_container" class="d-flex justify-space-between">
       <img src="/rectangle.svg"/>
       <img src="/rectangle.svg"/>
     </div>
@@ -35,10 +35,15 @@ export default {
 </script>
 
 <style scoped>
+#rectangles_container {
+  margin-bottom: -99px !important;
+}
+
 .progress-container {
   position: relative;
   width: 100%;
 }
+
 #progress-text-container {
   transform: rotate(-4deg);
   margin-bottom: -75px;
@@ -104,5 +109,21 @@ progress::-moz-progress-bar {
 .progress-icon img {
   width: 50px;
   height: 50px;
+}
+
+@media screen and (max-width: 745px) {
+  #rectangles_container {
+    margin-bottom: -65px !important;
+  }
+
+  .progress-text {
+    font-size: 30px;
+  }
+
+  #progress-text-container {
+    transform: rotate(-4deg);
+    margin-bottom: -72px;
+    margin-left: 25%;
+  }
 }
 </style>

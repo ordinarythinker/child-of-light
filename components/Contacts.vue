@@ -4,26 +4,24 @@
     class="px-5w d-flex flex-column"
     style="background: #E8E0F3;"
   >
-    <div style="height: 80px;"></div>
+    <div style="height: 80px;"/>
 
     <div class="d-flex flex-column">
       <div class="main-layout">
-        <div class="d-flex flex-column col-5">
+        <div class="d-flex flex-column left-part">
           <p class="page-title">{{ title }}</p>
-
-          <div style="height: 30px;"></div>
-
           <Contact v-for="contact in contacts" :key="contact.phone" :name="contact.name" :phone="contact.phone"/>
           <v-spacer/>
+          <div style="height: 40px;"/>
         </div>
 
-        <div class="d-grid col-7 justify-start">
+        <div class="d-flex flex-column justify-start right-part">
           <p class="pa-0 ma-0 page-title" >{{supportTitle}}</p>
-          <div style="height: 40px;"></div>
+          <div style="height: 40px;"/>
           <p class="pa-0 ma-0" v-html="bankAccount"></p>
-          <div style="height: 20px;"></div>
+          <div style="height: 20px;"/>
           <NuxtLink to="/agreement" class="links-no-decoration">Договір публічної оферти</NuxtLink>
-          <div style="height: 20px;"></div>
+          <div style="height: 20px;"/>
 
           <!-- <p class="pa-0 ma-0 f-22">{{or}}</p>
           <div style="height: 20px;"></div>
@@ -31,16 +29,16 @@
             <img id="qr" src="/qr.png" class="align-self-center">
           </div>-->
 
-          <div style="height: 80px;"></div>
+          <div style="height: 80px;"/>
         </div>
       </div>
 
-      <div style="height: 30px;"></div>
+      <div style="height: 30px;"/>
 
       <span>&copy; {{ new Date().getFullYear() }} Дитя світла</span>
     </div>
 
-    <div style="height: 30px;"></div>
+    <div style="height: 30px;"/>
   </div>
 </template>
 
@@ -98,5 +96,23 @@ export default {
   font-weight: bold;
 }
 
+.left-part {
+  width: 40%;
+}
+
+.right-part {
+  width: 60%;
+}
+
+@media screen and (max-width: 920px) {
+  .left-part {
+    width: 100%;
+  }
+
+  .right-part {
+    width: 100%;
+  }
+
+}
 
 </style>

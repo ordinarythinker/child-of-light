@@ -78,7 +78,7 @@ export default {
 
 @media screen and (max-width: 1150px) {
   .page-title {
-    font-size: 1.1em;
+    font-size: 1.2em;
     padding-bottom: 30px;
   }
 

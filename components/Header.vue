@@ -10,8 +10,6 @@
         <div style="width: 24px; height: 1px;"/>
         <button @click="goto('#implementation')" class="top-navigation-button-style f-22 hidden-menu">Реалізація</button>
         <div style="width: 24px; height: 1px;"/>
-        <button @click="goto('#history')" class="top-navigation-button-style f-22 hidden-menu">Історія</button>
-        <div style="width: 24px; height: 1px;"/>
         <button @click="goto('#team')" class="top-navigation-button-style f-22 hidden-menu">Команда</button>
         <div style="width: 24px; height: 1px;"/>
         <button @click="goto('#contacts')" class="top-navigation-button-style f-22 hidden-menu">Контакти</button>
@@ -24,7 +22,7 @@
       </button>
     </div>
 
-    <div style="height: 80px;"></div>
+    <div style="height: 80px;"/>
 
     <div class="d-block">
       <div class="d-flex flex-column">
@@ -35,7 +33,7 @@
       </div>
     </div>
 
-    <div style="height: 80px;"></div>
+    <div style="height: 80px;"/>
 
     <pre id="title-description" class="pa-0 ma-0 d-flex flex-column align-center">
       <span class="d-block f-22 ff">Дитя Світла — дитячий будинок:</span>
@@ -66,11 +64,11 @@
       </a>
     </div>
 
-    <div style="height: 120px;"></div>
+    <div style="height: 120px;"/>
 
     <ProgressBar value="58" max="300" iconSrc="/child_of_light.svg"/>
 
-    <div style="height: 100px;"></div>
+    <div style="height: 100px;"/>
 
     <div v-if="isDialogVisible" class="dialog" :style="dialogStyle">
       <PersonDialog :name="sponsors[selectedIndex].name" :url="sponsors[selectedIndex].avatar"/>
@@ -85,7 +83,6 @@
         <button @click="goto('#sponsors')" class="top-navigation-button-style f-22">Учасники</button>
         <button @click="goto('#idea')" class="top-navigation-button-style f-22">Ідея</button>
         <button @click="goto('#implementation')" class="top-navigation-button-style f-22u">Реалізація</button>
-        <button @click="goto('#history')" class="top-navigation-button-style f-22">Історія</button>
         <button @click="goto('#team')" class="top-navigation-button-style f-22">Команда</button>
         <button @click="goto('#contacts')" class="top-navigation-button-style f-22">Контакти</button>
         <div style="width: 1px; height: 30px;"/>
@@ -433,12 +430,11 @@
   }
 
   .join-button {
-    margin-bottom: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
-    padding: 0 20px;
+    padding: 8px 20px;
   }
 
   .button-background {
