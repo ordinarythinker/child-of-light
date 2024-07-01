@@ -52,6 +52,10 @@ export default {
   font-size: 32px;
 }
 
+.max-width {
+  width: 100% !important;
+}
+
 .footer_title {
   width: 100vw;
   display: flex;

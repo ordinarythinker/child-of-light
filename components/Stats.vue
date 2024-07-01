@@ -1,6 +1,7 @@
 <template>
-  <div class="px-5w my-50 d-flex flex-column">
+  <div class="max-width px-5w my-50 d-flex flex-column">
     <v-divider inset class="sections-separator"></v-divider>
+    <div style="width: 1px; height: 30px;"/>
     <div class="main-layout">
       <div class="main-title">
         <p class="page-title">{{ title }}</p>
@@ -13,13 +14,13 @@
           <div id="numbers-row">
             <div v-for="item in numbers" :key="item.number" class="number-item">
               <p class="pa-0 ma-0 number-item-title">{{ item.number }}</p>
-              <p class="pa-0 ma-0 f-22">{{ item.description }}</p>
+              <p class="pa-0 ma-0 description-text">{{ item.description }}</p>
             </div>
           </div>
 
           <div id="absolute-container">
-            <div class="d-flex flex-column" style="padding-bottom: 80px !important;">
-              <div style="position: relative; padding-bottom: 110px;">
+            <div id="absolute-inner-container" class="d-flex flex-column">
+              <div id="inner-relative">
                 <p id="absolute-title-1" class="pa-0 ma-0 absolute-title">
                   {{absoluteTitle1}}
                 </p>
@@ -79,6 +80,10 @@ export default {
   flex-direction: column;
 }
 
+.description-text {
+  font-size: 22px;
+}
+
 #absolute-container {
   position: absolute;
   display: flex;
@@ -91,6 +96,10 @@ export default {
 #arrow {
   margin-left: 30px;
   transform: rotate(-11deg);
+}
+
+#absolute-inner-container {
+  padding-bottom: 80px !important;
 }
 
 #absolute-title-1 {
@@ -106,6 +115,11 @@ export default {
 
 #absolute-subtitle {
   color: white;
+}
+
+#inner-relative {
+  position: relative;
+  padding-bottom: 110px;
 }
 
 .absolute-title {
@@ -147,10 +161,176 @@ export default {
   border-top-color: #FAE4CA !important;
 }
 
-.content-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
+@media screen and (max-width: 790px) {
+  .number-item-title {
+    font-size: 42px;
+  }
+
+  #absolute-inner-container {
+    padding-bottom: 20px !important;
+  }
+
+  #absolute-container {
+    margin-bottom: 120px;
+  }
+
+  #inner-relative {
+    position: relative;
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .number-item-title {
+    font-size: 32px;
+  }
+
+  #absolute-inner-container {
+    padding-bottom: 0 !important;
+  }
+
+  .absolute-title {
+    font-size: 73px;
+  }
+
+  #absolute-subtitle {
+    font-size: 0.8em;
+  }
+
+  #absolute-container {
+    margin-bottom: 100px;
+  }
+
+  #inner-relative {
+    position: relative;
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .number-item-title {
+    font-size: 28px;
+  }
+
+  .absolute-title {
+    font-size: 63px;
+  }
+
+  #absolute-subtitle {
+    font-size: 0.8em;
+  }
+
+  .description-text {
+    font-size: 0.8em;
+  }
+
+  #absolute-container {
+    margin-bottom: 100px;
+  }
+
+  #inner-relative {
+    position: relative;
+    padding-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .number-item-title {
+    font-size: 28px;
+  }
+
+  .absolute-title {
+    font-size: 45px;
+  }
+
+  #absolute-subtitle {
+    font-size: 0.6em;
+  }
+
+  #absolute-container {
+    margin-bottom: 110px;
+    padding-left: 20px;
+  }
+
+  #inner-relative {
+    position: relative;
+    padding-bottom: 60px;
+  }
+
+  #arrow {
+    height: 140px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 554px) {
+  .number-item-title {
+    font-size: 28px;
+  }
+
+  #absolute-container {
+    margin-bottom: 150px;
+  }
+
+  #arrow {
+    height: 120px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 554px) {
+  .number-item-title {
+    font-size: 28px;
+  }
+
+  .absolute-title {
+    font-size: 45px;
+  }
+
+  #absolute-subtitle {
+    font-size: 0.6em;
+  }
+
+  #absolute-container {
+    margin-bottom: 150px;
+  }
+
+  #inner-relative {
+    position: relative;
+    padding-bottom: 60px;
+  }
+
+  #arrow {
+    height: 120px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .number-item-title {
+    font-size: 24px;
+  }
+
+  .absolute-title {
+    font-size: 35px;
+  }
+
+  #absolute-subtitle {
+    font-size: 0.5em;
+  }
+
+  #absolute-container {
+    margin-bottom: 120px;
+  }
+
+  #inner-relative {
+    position: relative;
+    padding-bottom: 40px;
+  }
+
+  #arrow {
+    height: 100px;
+    width: auto;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="team" class="px-5w d-flex flex-column">
+  <div id="team" class="max-width px-5w d-flex flex-column">
     <div style="height: 50px;"></div>
 
     <div class="main-layout">

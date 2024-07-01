@@ -1,7 +1,7 @@
 <template>
   <div
     id="idea"
-    class="px-5w d-flex flex-column"
+    class="max-width px-5w d-flex flex-column"
     style="background: #FAE4CA;"
   >
     <div style="height: 100px;"></div>

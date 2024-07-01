@@ -1,5 +1,5 @@
 <template>
-  <div id="sponsors" class="px-5w d-flex flex-column align-center">
+  <div id="sponsors" class="max-width px-5w d-flex flex-column align-center">
     <div class="d-flex flex-row align-center align-content-center justify-space-between thin-divider">
       <Logo/>
 
@@ -17,7 +17,7 @@
 
       <a :href="monoLink" class="join-button f-22 button-background hidden-menu">Підтримати</a>
 
-      <button @click="toggleDrawer" class="top-navigation-button-style">
+      <button v-if="showMenu" @click="toggleDrawer" class="top-navigation-button-style">
         <img id="hidden-menu-button" src="/menu.png"/>
       </button>
     </div>
@@ -35,11 +35,11 @@
 
     <div style="height: 80px;"/>
 
-    <pre id="title-description" class="pa-0 ma-0 d-flex flex-column align-center">
-      <span class="d-block f-22 ff">Дитя Світла — дитячий будинок:</span>
-      <span class="d-block f-22 ff" style="width: 100%">Шукаємо 300 донорів, які підтримають будівництво дитячого будинку.</span>
-      <span class="d-block f-22 ff">Ось ті, хто приєднався:</span>
-    </pre>
+    <div class="pa-0 ma-0 d-flex flex-column align-center">
+      <span class="d-block text-center f-22 ff">Дитя Світла — дитячий будинок:</span>
+      <span class="d-block text-center f-22 ff" style="width: 100%">Шукаємо 300 донорів, які підтримають будівництво дитячого будинку.</span>
+      <span class="d-block text-center f-22 ff">Ось ті, хто приєднався:</span>
+    </div>
 
     <div style="height: 40px;"/>
 
@@ -344,6 +344,7 @@
           }
         ],
         isDialogVisible: false,
+        showMenu: false,
         selectedIndex: null,
         dialogStyle: {
           top: '0px',
@@ -371,7 +372,17 @@
       toggleDrawer() {
         this.isDrawerVisible = !this.isDrawerVisible;
       },
-    }
+      updateScreenWidth() {
+        this.showMenu = window.innerWidth <= 920;
+      },
+    },
+    mounted() {
+      window.addEventListener('resize', this.updateScreenWidth);
+      this.updateScreenWidth();
+    },
+    beforeDestroy() {
+      window.removeEventListener('resize', this.updateScreenWidth);
+    },
   }
   </script>
 
@@ -397,11 +408,6 @@
     display: none;
     width: 35px !important;
     height: 35px !important;
-  }
-
-  #title-description {
-    padding-left: 50px !important;
-    padding-right: 50px !important;
   }
 
   .thin-divider {
@@ -551,6 +557,12 @@
 
     #hidden-menu-button {
       display: block;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .d-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div
     id="contacts"
-    class="px-5w d-flex flex-column"
+    class="max-width px-5w d-flex flex-column"
     style="background: #E8E0F3;"
   >
     <div style="height: 80px;"/>
